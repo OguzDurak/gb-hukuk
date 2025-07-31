@@ -7,6 +7,15 @@ const Services = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
+  // WhatsApp function
+  const openWhatsApp = () => {
+    const phoneNumber = '905077334494';
+    const message = 'Merhaba, size web siteniz üzerinden ulaşıyorum.';
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   const handleServiceClick = (service) => {
     setSelectedService(service);
     setShowModal(true);
@@ -238,7 +247,11 @@ const Services = () => {
                 Uzman avukat kadromuzla tüm hukuki sorunlarınıza çözüm buluyoruz. 
                 Ücretsiz ön görüşme için hemen iletişime geçin.
               </p>
-              <button className="cta-button">
+              <button 
+                className="cta-button"
+                onClick={openWhatsApp}
+                style={{ cursor: 'pointer' }}
+              >
                 <FaUserTie className="me-2" />
                 Danışmanlık Al
               </button>

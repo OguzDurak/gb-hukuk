@@ -4,6 +4,15 @@ import { FaBalanceScale, FaHandshake, FaShieldAlt, FaUsers, FaAward, FaCertifica
 import './About.css';
 
 const About = () => {
+  // WhatsApp function
+  const openWhatsApp = () => {
+    const phoneNumber = '905077334494';
+    const message = 'Merhaba, size web siteniz üzerinden ulaşıyorum.';
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   const values = [
     {
       id: 1,
@@ -173,7 +182,11 @@ const About = () => {
                 Deneyimli ekibimizle size en uygun çözümü bulalım. Bugün iletişime geçin ve 
                 hukuki haklarınızı korumak için ilk adımı atın.
               </p>
-              <button className="cta-button">
+              <button 
+                className="cta-button"
+                onClick={openWhatsApp}
+                style={{ cursor: 'pointer' }}
+              >
                 <FaHandshake className="me-2" />
                 İletişime Geçin
               </button>

@@ -5,6 +5,15 @@ import heroBackground from '../assets/hero_background.png';
 import './Hero.css';
 
 const Hero = () => {
+  // WhatsApp function
+  const openWhatsApp = () => {
+    const phoneNumber = '905077334494';
+    const message = 'Merhaba, size web siteniz üzerinden ulaşıyorum.';
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   return (
     <section 
       className="hero-section"
@@ -41,11 +50,28 @@ const Hero = () => {
             </div>
             
             <div className="hero-buttons">
-              <Button variant="primary" size="lg" className="cta-primary me-3">
+              <Button 
+                variant="primary" 
+                size="lg" 
+                className="cta-primary me-3"
+                onClick={openWhatsApp}
+                style={{ cursor: 'pointer' }}
+              >
                 <FaCalendarAlt className="me-2" />
                 Danışmanlık Al
               </Button>
-              <Button variant="outline-light" size="lg" className="cta-secondary">
+              <Button 
+                variant="outline-light" 
+                size="lg" 
+                className="cta-secondary"
+                onClick={() => {
+                  const element = document.getElementById('services');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                style={{ cursor: 'pointer' }}
+              >
                 <FaBalanceScale className="me-2" />
                 Hizmetlerimiz
               </Button>

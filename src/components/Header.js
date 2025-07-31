@@ -6,6 +6,27 @@ import './Header.css';
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
 
+  // Smooth scroll function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+      setExpanded(false); // Close mobile menu after click
+    }
+  };
+
+  // WhatsApp function
+  const openWhatsApp = () => {
+    const phoneNumber = '905077334494';
+    const message = 'Merhaba, size web siteniz üzerinden ulaşıyorum.';
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   return (
     <Navbar 
       bg="white" 
@@ -32,28 +53,53 @@ const Header = () => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link href="#home" className="nav-item">
+            <Nav.Link 
+              onClick={() => scrollToSection('home')} 
+              className="nav-item"
+              style={{ cursor: 'pointer' }}
+            >
               Ana Sayfa
             </Nav.Link>
-            <Nav.Link href="#about" className="nav-item">
+            <Nav.Link 
+              onClick={() => scrollToSection('about')} 
+              className="nav-item"
+              style={{ cursor: 'pointer' }}
+            >
               Hakkımızda
             </Nav.Link>
-            <Nav.Link href="#services" className="nav-item">
+            <Nav.Link 
+              onClick={() => scrollToSection('services')} 
+              className="nav-item"
+              style={{ cursor: 'pointer' }}
+            >
               Hizmetlerimiz
             </Nav.Link>
-            <Nav.Link href="#team" className="nav-item">
+            <Nav.Link 
+              onClick={() => scrollToSection('team')} 
+              className="nav-item"
+              style={{ cursor: 'pointer' }}
+            >
               Ekibimiz
             </Nav.Link>
-            <Nav.Link href="#articles" className="nav-item">
+            <Nav.Link 
+              href="#" 
+              className="nav-item"
+              style={{ color: 'rgba(255,255,255,0.6)' }}
+            >
               Makalelerimiz
             </Nav.Link>
-            <Nav.Link href="#contact" className="nav-item">
+            <Nav.Link 
+              onClick={() => scrollToSection('contact')} 
+              className="nav-item"
+              style={{ cursor: 'pointer' }}
+            >
               İletişim
             </Nav.Link>
             <Button 
               variant="dark" 
               className="contact-btn ms-3"
-              href="#appointment"
+              onClick={openWhatsApp}
+              style={{ cursor: 'pointer' }}
             >
               Danışmanlık Al
             </Button>

@@ -4,6 +4,15 @@ import { FaGraduationCap, FaAward, FaEnvelope, FaPhone, FaLinkedin, FaBalanceSca
 import './Team.css';
 
 const Team = () => {
+  // WhatsApp function
+  const openWhatsApp = () => {
+    const phoneNumber = '905077334494';
+    const message = 'Merhaba, size web siteniz üzerinden ulaşıyorum.';
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   const teamMembers = [
     {
       id: 1,
@@ -169,7 +178,11 @@ const Team = () => {
                 Deneyimli avukat kadromuz, size en uygun hukuki çözümü sunmak için hazır. 
                 Hangi konuda yardıma ihtiyacınız varsa, uzman ekibimiz yanınızda.
               </p>
-              <button className="cta-button">
+              <button 
+                className="cta-button"
+                onClick={openWhatsApp}
+                style={{ cursor: 'pointer' }}
+              >
                 <FaHandshake className="me-2" />
                 Ekibimizle İletişime Geçin
               </button>
