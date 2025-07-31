@@ -1,10 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { FaBars } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
+
+  // Body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (expanded) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    // Cleanup on component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [expanded]);
+
+  // Enhanced mobile menu toggle
+  const handleToggle = (isExpanded) => {
+    setExpanded(isExpanded);
+  };
+
+  // Close mobile menu when clicking outside
+  const handleOutsideClick = () => {
+    if (expanded) {
+      setExpanded(false);
+    }
+  };
 
   // Smooth scroll function
   const scrollToSection = (sectionId) => {
@@ -25,88 +50,111 @@ const Header = () => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
+    setExpanded(false); // Close mobile menu after WhatsApp
   };
 
+  // Custom Hamburger Component
+  const HamburgerIcon = ({ isOpen }) => (
+    <div className={`hamburger-icon ${isOpen ? 'open' : ''}`}>
+      <span className="hamburger-line"></span>
+      <span className="hamburger-line"></span>
+      <span className="hamburger-line"></span>
+    </div>
+  );
+
   return (
-    <Navbar 
-      bg="white" 
-      expand="lg" 
-      sticky="top" 
-      className="main-navbar shadow-sm"
-      expanded={expanded}
-      onToggle={setExpanded}
-    >
-      <Container>
-        <Navbar.Brand href="#home" className="brand-logo">
-          <div className="logo-text">
-            <span className="brand-name">GB</span>
-            <span className="brand-subtitle">HUKUK</span>
-          </div>
-          <div className="brand-tagline">
-            Güvenilir Hukuki Çözümler
-          </div>
-        </Navbar.Brand>
+    <>
+      <Navbar 
+        bg="white" 
+        expand="lg" 
+        sticky="top" 
+        className={`main-navbar shadow-sm ${expanded ? 'menu-open' : ''}`}
+        expanded={expanded}
+        onToggle={handleToggle}
+      >
+        <Container>
+          <Navbar.Brand onClick={() => scrollToSection('home')} className="brand-logo" style={{ cursor: 'pointer' }}>
+            <div className="logo-text">
+              <span className="brand-name">GB</span>
+              <span className="brand-subtitle">HUKUK</span>
+            </div>
+            <div className="brand-tagline">
+              Güvenilir Hukuki Çözümler
+            </div>
+          </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
-          <FaBars />
-        </Navbar.Toggle>
+          <Navbar.Toggle 
+            aria-controls="basic-navbar-nav" 
+            className="custom-toggler"
+          >
+            <HamburgerIcon isOpen={expanded} />
+          </Navbar.Toggle>
 
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto">
-            <Nav.Link 
-              onClick={() => scrollToSection('home')} 
-              className="nav-item"
-              style={{ cursor: 'pointer' }}
-            >
-              Ana Sayfa
-            </Nav.Link>
-            <Nav.Link 
-              onClick={() => scrollToSection('about')} 
-              className="nav-item"
-              style={{ cursor: 'pointer' }}
-            >
-              Hakkımızda
-            </Nav.Link>
-            <Nav.Link 
-              onClick={() => scrollToSection('services')} 
-              className="nav-item"
-              style={{ cursor: 'pointer' }}
-            >
-              Hizmetlerimiz
-            </Nav.Link>
-            <Nav.Link 
-              onClick={() => scrollToSection('team')} 
-              className="nav-item"
-              style={{ cursor: 'pointer' }}
-            >
-              Ekibimiz
-            </Nav.Link>
-            <Nav.Link 
-              href="#" 
-              className="nav-item"
-              style={{ color: 'rgba(255,255,255,0.6)' }}
-            >
-              Makalelerimiz
-            </Nav.Link>
-            <Nav.Link 
-              onClick={() => scrollToSection('contact')} 
-              className="nav-item"
-              style={{ cursor: 'pointer' }}
-            >
-              İletişim
-            </Nav.Link>
-            <Button 
-              variant="dark" 
-              className="contact-btn ms-3"
-              onClick={openWhatsApp}
-              style={{ cursor: 'pointer' }}
-            >
-              Danışmanlık Al
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          <Navbar.Collapse id="basic-navbar-nav" className="mobile-nav-menu">
+            <Nav className="mx-auto">
+              <Nav.Link 
+                onClick={() => scrollToSection('home')} 
+                className="nav-item mobile-nav-item"
+                style={{ cursor: 'pointer' }}
+              >
+                Ana Sayfa
+              </Nav.Link>
+              <Nav.Link 
+                onClick={() => scrollToSection('about')} 
+                className="nav-item mobile-nav-item"
+                style={{ cursor: 'pointer' }}
+              >
+                Hakkımızda
+              </Nav.Link>
+              <Nav.Link 
+                onClick={() => scrollToSection('services')} 
+                className="nav-item mobile-nav-item"
+                style={{ cursor: 'pointer' }}
+              >
+                Hizmetlerimiz
+              </Nav.Link>
+              <Nav.Link 
+                onClick={() => scrollToSection('team')} 
+                className="nav-item mobile-nav-item"
+                style={{ cursor: 'pointer' }}
+              >
+                Ekibimiz
+              </Nav.Link>
+              <Nav.Link 
+                href="#" 
+                className="nav-item mobile-nav-item disabled-item"
+                style={{ color: 'rgba(255,255,255,0.6)' }}
+              >
+                Makalelerimiz
+              </Nav.Link>
+              <Nav.Link 
+                onClick={() => scrollToSection('contact')} 
+                className="nav-item mobile-nav-item"
+                style={{ cursor: 'pointer' }}
+              >
+                İletişim
+              </Nav.Link>
+              <Button 
+                variant="dark" 
+                className="contact-btn ms-3 mobile-cta-btn"
+                onClick={openWhatsApp}
+                style={{ cursor: 'pointer' }}
+              >
+                Danışmanlık Al
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      
+      {/* Mobile Menu Backdrop */}
+      {expanded && (
+        <div 
+          className="mobile-menu-backdrop"
+          onClick={handleOutsideClick}
+        />
+      )}
+    </>
   );
 };
 
