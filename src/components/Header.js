@@ -94,49 +94,49 @@ const Header = () => {
             <Nav className="mx-auto">
               <Nav.Link 
                 onClick={() => scrollToSection('home')} 
-                className="nav-item mobile-nav-item"
+                className="nav-item"
                 style={{ cursor: 'pointer' }}
               >
                 Ana Sayfa
               </Nav.Link>
               <Nav.Link 
                 onClick={() => scrollToSection('about')} 
-                className="nav-item mobile-nav-item"
+                className="nav-item"
                 style={{ cursor: 'pointer' }}
               >
                 Hakkımızda
               </Nav.Link>
               <Nav.Link 
                 onClick={() => scrollToSection('services')} 
-                className="nav-item mobile-nav-item"
+                className="nav-item"
                 style={{ cursor: 'pointer' }}
               >
                 Hizmetlerimiz
               </Nav.Link>
               <Nav.Link 
                 onClick={() => scrollToSection('team')} 
-                className="nav-item mobile-nav-item"
+                className="nav-item"
                 style={{ cursor: 'pointer' }}
               >
                 Ekibimiz
               </Nav.Link>
               <Nav.Link 
-                href="#" 
-                className="nav-item mobile-nav-item disabled-item"
-                style={{ color: 'rgba(255,255,255,0.6)' }}
+                onClick={() => scrollToSection('articles')} 
+                className="nav-item"
+                style={{ cursor: 'pointer' }}
               >
-                Makalelerimiz
+                Makaleler
               </Nav.Link>
               <Nav.Link 
                 onClick={() => scrollToSection('contact')} 
-                className="nav-item mobile-nav-item"
+                className="nav-item"
                 style={{ cursor: 'pointer' }}
               >
                 İletişim
               </Nav.Link>
               <Button 
                 variant="dark" 
-                className="contact-btn ms-3 mobile-cta-btn"
+                className="contact-btn ms-3"
                 onClick={openWhatsApp}
                 style={{ cursor: 'pointer' }}
               >
@@ -146,11 +146,11 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      
-      {/* Mobile Menu Backdrop */}
+
+      {/* Mobile Menu Overlay */}
       {expanded && (
         <div 
-          className="mobile-menu-backdrop"
+          className="mobile-menu-overlay" 
           onClick={handleOutsideClick}
         />
       )}
