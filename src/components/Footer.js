@@ -206,6 +206,20 @@ const Footer = () => {
             <div className="copyright">
               <p className="copyright-text">
                 © 2025 Bilgiç Avukatlık ve Hukuk Bürosu. Tüm hakları saklıdır.
+                <span style={{ margin: '0 10px', color: '#95a5a6', fontSize: '0.8rem' }}>|</span>
+                <a 
+                  href="/admin" 
+                  style={{ 
+                    color: '#95a5a6', 
+                    textDecoration: 'none', 
+                    fontSize: '0.8rem',
+                    opacity: 0.7
+                  }}
+                  onMouseOver={(e) => e.target.style.opacity = '1'}
+                  onMouseOut={(e) => e.target.style.opacity = '0.7'}
+                >
+                  Panel
+                </a>
               </p>
               <p className="legal-text">
                 Bu web sitesindeki tüm bilgiler sadece bilgilendirme amaçlıdır ve hukuki tavsiye niteliği taşımaz.
