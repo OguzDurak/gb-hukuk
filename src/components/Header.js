@@ -75,8 +75,8 @@ const Header = () => {
         <Container>
           <Navbar.Brand onClick={() => scrollToSection('home')} className="brand-logo" style={{ cursor: 'pointer' }}>
             <div className="logo-text">
-              <span className="brand-name">GB</span>
-              <span className="brand-subtitle">HUKUK</span>
+              <span className="brand-name">Bilgiç</span>
+              <span className="brand-subtitle">Hukuk Bürosu</span>
             </div>
             <div className="brand-tagline">
               Güvenilir Hukuki Çözümler
