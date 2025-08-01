@@ -11,6 +11,7 @@ import {
   FaCheckCircle,
   FaExclamationTriangle
 } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -103,11 +104,30 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call (replace with actual email service)
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // TODO: Implement actual email service (EmailJS, etc.)
-      console.log('Form submitted:', formData);
+      // EmailJS Configuration
+      const serviceId = 'service_4sujrk7';
+      const templateId = 'template_9k13xef';
+      const publicKey = 'rgMqdC8BJJwkgX5n-';
+
+      // Template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'gulumserbilgiclaw@gmail.com'
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      console.log('Email sent successfully:', response);
       
       setSubmitStatus('success');
       setFormData({
@@ -118,19 +138,19 @@ const Contact = () => {
         message: ''
       });
       
-      // Auto-hide success message after 5 seconds
+      // Auto-hide success message after 7 seconds
       setTimeout(() => {
         setSubmitStatus(null);
-      }, 5000);
+      }, 7000);
       
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('EmailJS error:', error);
       setSubmitStatus('error');
       
-      // Auto-hide error message after 5 seconds
+      // Auto-hide error message after 7 seconds
       setTimeout(() => {
         setSubmitStatus(null);
-      }, 5000);
+      }, 7000);
     } finally {
       setIsSubmitting(false);
     }
