@@ -45,7 +45,7 @@ const Header = () => {
               Ekibimiz
             </Nav.Link>
             <Nav.Link href="#articles" className="nav-item">
-              Makalelerimiz
+              Makaleler
             </Nav.Link>
             <Nav.Link href="#contact" className="nav-item">
               İletişim
