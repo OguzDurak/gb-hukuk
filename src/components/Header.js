@@ -18,8 +18,8 @@ const Header = () => {
       <Container>
         <Navbar.Brand href="#home" className="brand-logo">
           <div className="logo-text">
-            <span className="brand-name">GB</span>
-            <span className="brand-subtitle">HUKUK</span>
+            <span className="brand-name">Bilgiç</span>
+            <span className="brand-subtitle">Hukuk Bürosu</span>
           </div>
           <div className="brand-tagline">
             Güvenilir Hukuki Çözümler
