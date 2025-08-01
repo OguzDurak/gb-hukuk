@@ -29,7 +29,7 @@ const Team = () => {
       ],
       bio: "İstanbul Üniversitesi Hukuk Fakültesi mezunu. 5 yıllık deneyimiyle özellikle gayrimenkul ve ceza hukuku alanlarında uzmanlaşmış. Müvekkil odaklı yaklaşımı ve etik değerleri ile tanınır.",
       contact: {
-        email: "gulumser@bilgichukuk.com",
+        email: "gulumserbilgiclaw@gmail.com",
         phone: "+90 507 733 44 94"
       },
       icon: FaBalanceScale
@@ -38,7 +38,7 @@ const Team = () => {
       id: 2,
       name: "Duygu Elif Gedikoğlu",
       title: "Kıdemli Avukat - Gedikoğlu Hukuk Kurucu Avukat",
-      image: "/images/duygu.jpg",
+      image: "/images/duygu.png",
       education: "Kocaeli Üniversitesi Hukuk Fakültesi",
       experience: "15+ Yıl Deneyim",
       specializations: [
