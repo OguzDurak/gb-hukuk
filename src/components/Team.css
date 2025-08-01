@@ -239,17 +239,21 @@
 
 /* Member Contact */
 .member-contact {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   gap: 0.8rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(64, 224, 208, 0.2);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .contact-item {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 0.8rem;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .contact-icon {
@@ -260,9 +264,13 @@
 }
 
 .contact-text {
-  font-size: 0.9rem;
-  color: #495057;
-  font-weight: 500;
+  font-size: 0.95rem !important;
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Team Stats */
