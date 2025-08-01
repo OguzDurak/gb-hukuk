@@ -30,8 +30,8 @@ const Hero = () => {
             </h1>
             
             <p className="hero-description">
-              GB Hukuk Bürosu olarak, 10 yıllık deneyimimizle müvekkillerimize 
-              en kaliteli hukuki hizmetleri sunuyoruz. Uzman Ekibimizle size en iyi hizmeti sunuyoruz.
+              Bilgiç Avukatlık ve Hukuk Bürosu olarak, 10+ yıllık deneyimimizle müvekkillerimize 
+              en kaliteli hukuki hizmetleri sunuyoruz. Uzman ekibimizle size en iyi hizmeti sunuyoruz.
             </p>
             
             <div className="hero-stats">
@@ -75,17 +75,6 @@ const Hero = () => {
                 <FaBalanceScale className="me-2" />
                 Hizmetlerimiz
               </Button>
-            </div>
-            
-            <div className="hero-contact-info">
-              <div className="contact-item">
-                <FaPhone className="contact-icon" />
-                <span>+90 507 733 44 94</span>
-              </div>
-              <div className="contact-item">
-                <FaEnvelope className="contact-icon" />
-                <span>info@gb-hukuk.com</span>
-              </div>
             </div>
           </Col>
         </Row>
