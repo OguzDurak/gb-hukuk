@@ -172,8 +172,8 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       title: "E-posta",
-      content: "gulumser@bilgichukuk.com",
-      subContent: "info@bilgichukuk.com"
+      content: "gulumserbilgiclaw@gmail.com",
+      subContent: "gulumserbilgiclaw@gmail.com"
     },
     {
       icon: FaWhatsapp,
@@ -401,7 +401,7 @@ const Contact = () => {
 
         <Row className="contact-content justify-content-center">
           {/* Contact Info */}
-          <Col lg={8} md={10} sm={12}>
+          <Col lg={8} md={10} sm={12} className="d-flex justify-content-center">
             <div className="contact-info-wrapper">
               <h3 className="info-title">İletişim Bilgileri</h3>
               
