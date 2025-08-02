@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { 
   FaMapMarkerAlt, 
@@ -9,11 +9,15 @@ import {
   FaLinkedin,
   FaInstagram,
   FaFacebook,
-  FaArrowUp
+  FaArrowUp,
+  FaChevronDown,
+  FaChevronUp
 } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
+  const [showAdditionalServices, setShowAdditionalServices] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -38,19 +42,24 @@ const Footer = () => {
     { name: 'İletişim', href: '#contact' }
   ];
 
-  const services = [
+  const mainServices = [
     'Gayrimenkul Hukuku',
     'Borç Anlaşmaları',
-    'Ceza Hukuku',
+    'Ceza Hukuku'
+  ];
+
+  const additionalServices = [
     'Fikri Mülkiyet',
     'Ticaret Hukuku',
-    'Aile Hukuku'
+    'Aile Hukuku',
+    'İş Hukuku',
+    'Danışmanlık Hizmetleri'
   ];
 
   const contactInfo = {
     address: 'Ümmühan, Tok Cd. No:7/3, 17860 Ayvacık, Çanakkale',
     phone: '+90 507 733 44 94',
-    email: 'gulumser@bilgichukuk.com',
+    email: 'gulumserbilgiclaw@gmail.com',
     workingHours: {
       weekdays: 'Pazartesi - Cuma: 09:00 - 17:00',
       weekend: 'Cumartesi - Pazar: Kapalı'
@@ -73,8 +82,8 @@ const Footer = () => {
                 </div>
               </div>
               <p className="brand-description">
-                10 yıldır hukuki alanda güvenilir çözümler sunarak, müvekkillerimizin 
-                haklarını koruyoruz. Profesyonel yaklaşım ve uzman kadromuzla yanınızdayız.
+                Ayvacık merkezinde hukuki alanda güvenilir çözümler sunarak, müvekkillerimizin 
+                haklarını koruyoruz. Profesyonel yaklaşım ve deneyimli kadromuzla her zaman yanınızdayız.
               </p>
               <div className="social-links">
                 <a href="#" className="social-link" aria-label="LinkedIn">
@@ -118,9 +127,26 @@ const Footer = () => {
             <div className="footer-services">
               <h5 className="footer-title">Hizmetlerimiz</h5>
               <ul className="services-list">
-                {services.map((service, index) => (
+                {/* Ana Hizmetler */}
+                {mainServices.map((service, index) => (
                   <li key={index} className="service-item">
-                    <span className="service-bullet">•</span>
+                    {service}
+                  </li>
+                ))}
+                
+                {/* Daha Fazla Hizmetler Butonu */}
+                <li className="service-item service-toggle" onClick={() => setShowAdditionalServices(!showAdditionalServices)}>
+                  <span className="service-bullet toggle-bullet">
+                    {showAdditionalServices ? <FaChevronUp /> : <FaChevronDown />}
+                  </span>
+                  <span className="toggle-text">
+                    {showAdditionalServices ? 'Daha Az Göster' : 'Diğer Hizmetlerimiz'}
+                  </span>
+                </li>
+                
+                {/* Ek Hizmetler (Açılır) */}
+                {showAdditionalServices && additionalServices.map((service, index) => (
+                  <li key={`additional-${index}`} className="service-item additional-service">
                     {service}
                   </li>
                 ))}
