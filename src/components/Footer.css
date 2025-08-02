@@ -417,15 +417,17 @@
 }
 
 .contact-text {
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
   font-size: 0.9rem;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .working-hours-text {
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
   font-size: 0.9rem;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 .working-hours-text div:first-child {
