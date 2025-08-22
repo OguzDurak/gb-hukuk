@@ -437,9 +437,6 @@ const Contact = () => {
             </div>
           </Col>
         </Row>
-
-    
-
         {/* Map Section */}
         <Row className="mt-5">
           <Col lg={12}>
